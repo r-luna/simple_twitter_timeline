@@ -9,32 +9,29 @@
 ;(function(ns,$){
     var _cb = null;
     ns.parseResponse = function(o){
-        var str = o.body;
         var t = [];
         var tempObj = {};
-        $($.parseHTML(str)).find('.tweet').each(function(i){
+        $($.parseHTML(o.body)).find('.timeline-TweetList-tweet').each(function(i){
             tempObj = {};
             tempObj.published = {};
             tempObj.author = {};
             tempObj.author.avatar = {};
             tempObj.tweet = {};
-            tempObj.datetime = $(this).find('.permalink').data('datetime');
-            tempObj.permalink  = $(this).find('.permalink').attr('href');
+            tempObj.datetime = $(this).find('.dt-updated').attr('datetime');
+            tempObj.permalink  = $(this).find('.link.customisable').attr('href');
             tempObj.published.publishtime = $(this).find('time').attr('datetime');
             tempObj.published.title = $(this).find('time').attr('title');
             tempObj.published.label = $(this).find('time').attr('aria-label');
-            tempObj.author.statusurl = $(this).find('.u-url').attr('href');
-            tempObj.author.url = $(this).find('.p-author .u-url').attr('href');
-            tempObj.author.label = $(this).find('.p-author .u-url').attr('aria-label');
-            tempObj.author.avatar.src = $(this).find('.p-author .u-photo').attr('src');
-            tempObj.author.avatar.src_2x = $(this).find('.p-author .u-photo').data('src-2x');
-            tempObj.author.fullname = $(this).find('.p-author .p-name').html();
-            tempObj.author.nickname = '@'+$(this).find('.p-author .p-nickname b').html();
-            tempObj.tweet.id = $(this).data('tweet-id');
+            tempObj.author.statusurl = $(this).find('.timeline-Tweet-timestamp').attr('href');
+            tempObj.author.url = $(this).find('.TweetAuthor-link').attr('href');
+            tempObj.author.avatar.src = $(this).find('.Avatar').data('src-1x');
+            tempObj.author.avatar.src_2x = $(this).find('.Avatar').data('src-2x');
+            tempObj.author.fullname = $(this).find('.TweetAuthor-link').attr('aria-label');
+            tempObj.author.nickname = $(this).find('.TweetAuthor-screenName').attr('title');
+            tempObj.tweet.id = $(this).find('.js-tweetIdInfo').data('tweet-id');
             tempObj.tweet.url = $(this).find('.link').attr('href');
             $(this).find('.link').remove();
-            tempObj.tweet.entry = $(this).find('.e-entry-title').text();
-            tempObj.tweet.favorited = $(this).find('.stats-wide .stats .stats-favorites strong').text();
+            tempObj.tweet.entry = $(this).find('.timeline-Tweet-text').text();
             t.push(tempObj);
         });
         _cb(t);
