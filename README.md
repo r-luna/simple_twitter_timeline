@@ -6,7 +6,7 @@ within your Twitter account.
 
 Add the script to your page and call this function:
 
-twtrUtil.getTimeline(CALLBACK_HERE,ID_HERE)
+`twtrUtil.getTimeline(CALLBACK_HERE,ID_HERE)`
 
 Your callback is sent an array of "tweet" objects.
 
