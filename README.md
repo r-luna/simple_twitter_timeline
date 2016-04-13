@@ -9,3 +9,9 @@ Add the script to your page and call this function:
 twtrUtil.getTimeline(CALLBACK_HERE,ID_HERE)
 
 Your callback is sent an array of "tweet" objects.
+
+# version history
+
+- V1.0.0 October 1, 2015 
+- V1.0.1 April 13, 2016
+ - Updated to account for changes in what Twitter returns 
