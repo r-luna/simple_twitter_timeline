@@ -24,11 +24,11 @@
             tempObj.published.label = $(this).find('time').attr('aria-label');
             tempObj.author.statusurl = $(this).find('.timeline-Tweet-timestamp').attr('href');
             tempObj.author.url = $(this).find('.TweetAuthor-link').attr('href');
-            tempObj.author.avatar.src = $(this).find('.Avatar').data('src-1x');
-            tempObj.author.avatar.src_2x = $(this).find('.Avatar').data('src-2x');
+            tempObj.author.avatar.src = $(this).find('.Avatar').attr('data-src-1x');
+            tempObj.author.avatar.src_2x = $(this).find('.Avatar').attr('data-src-2x');
             tempObj.author.fullname = $(this).find('.TweetAuthor-link').attr('aria-label');
             tempObj.author.nickname = $(this).find('.TweetAuthor-screenName').attr('title');
-            tempObj.tweet.id = $(this).find('.js-tweetIdInfo').data('tweet-id');
+            tempObj.tweet.id = $(this).find('.js-tweetIdInfo').attr('data-tweet-id');
             tempObj.tweet.url = $(this).find('.link').attr('href');
             $(this).find('.link').remove();
             tempObj.tweet.entry = $(this).find('.timeline-Tweet-text').text();
